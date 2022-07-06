@@ -23,7 +23,7 @@ RENAME
   p는 전체 숫자의 길이를 나타내고, s는 소숫점 이하 숫자의 길이를 나타낸다.
 
 ▎날짜형 데이터
-날짜형 데이터타입은 DATE 타입이다. 날짜와 시각 정보를 갖는다.
+날짜형 데이터타입은 DATE 타입이다. 날짜와 시각 정보를 갖는다. (toDate)
 
 DDL(Data Definition Language)은 데이터베이스 객체를 조작하는 명령문이다.
 CREATE, ALTER, DROP, TRUNCATE, RENAME 의 5가지 패턴을 갖고 있다.
@@ -31,7 +31,7 @@ DDL 은 자동 COMMIT 이 이루어진다.
 
 9.2  테이블 생성 CREATE TABLE
 
-▪ 테이블명 및 컬럼명 명명 규칙
+▪ 테이블명 및 컬럼명 명명 규칙--오라클은 한 글자에 3byte / 일반 글자는 2byte
   1) 반드시 문자로 시작한다.
   2) 숫자도 사용할 수 있다.
   3) 최대 30바이트까지 가능하다.
@@ -47,7 +47,7 @@ CREATE TABLE 테이블명 (
 ▪ 테이블명 뒤에 데이터타입과 함께 나열한 컬럼들을 괄호로 묶어 생성한다.
 
 CREATE TABLE temp(
-   id       NUMBER(4) PRIMARY KEY,
+   id       NUMBER(4) PRIMARY KEY,--primary key (not null)
    name     VARCHAR2(30)
 );
 
@@ -68,7 +68,8 @@ WHERE    id = 101;
 
 COMMIT;
 
-2. 테이블 구조 변경 ALTER TABLE  --------테이블 짤때 잘짜야함 add잘 안씀 modify를 많이씀
+9.2. 테이블 구조 변경 ALTER TABLE  --------테이블 짤때 잘짜야함/ add잘 안씀/ modify를 많이씀
+-----------------------------------------회사에서 권한 잘 안줌
 ALTER TABLE은 테이블의 구조를 변경(컬럼 추가, 컬럼 변경, 컬럼 삭제)하는
 명령문이다.
 
@@ -79,7 +80,7 @@ ALTER TABLE은 테이블의 구조를 변경(컬럼 추가, 컬럼 변경, 컬�
 temp 테이블에 숫자 8자리를 담을 salary 컬럼을 추가하자
 ALTER TABLE temp
 ADD (salary NUMBER(8));
-
+--ADD salary NUMBER(8); 가로 안써도됨?
 desc temp;
 
 101번의 salary를 3000으로 변경
@@ -123,3 +124,42 @@ rename column id to temp_id;
 desc temp;
 
 commit;
+--------------------------------------------------------------------------------
+--2022-07-06 이어서
+
+9.3 테이블 삭제 -- DROP
+DROP TABLE 테이블명;
+
+휴지통 비우기
+--PURGE RECYCLEBIN;
+
+9.4. 데이터행 삭제 --TRUNCATE : 조건절 사용 불가
+TRUNCATE 테이블명 --구조만 남기도 데이터행 모두 삭제
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
